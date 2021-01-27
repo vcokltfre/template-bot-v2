@@ -78,6 +78,7 @@ class Default(commands.Cog):
     @commands.command(name="ping")
     @commands.is_owner()
     async def ping(self, ctx: commands.Context):
+        """Get the bot's current API ping and websocket latency"""
         t_start = time.time()
         m = await ctx.channel.send("Testing RTT for message editing.")
         await m.edit(content="Testing...")
@@ -88,6 +89,7 @@ class Default(commands.Cog):
     @commands.command(name="uptime")
     @commands.is_owner()
     async def uptime(self, ctx: commands.Context):
+        """Get the bot's current uptime"""
         bot_uptime = timedelta(seconds=round(time() - self.bot.ltime))
         cog_uptime = timedelta(seconds=round(time() - self.ltime))
         await ctx.send(f"Bot uptime: {bot_uptime}\nCog load uptime: {cog_uptime}")
