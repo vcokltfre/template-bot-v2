@@ -15,12 +15,8 @@ class Bot(commands.Bot):
 
         self.logger = WebhookLogger(name=name, url=logging_url, level=loglevel)
 
-    def load_initial_cogs(self, cogs: List[str]):
+    def load_initial_cogs(self, *cogs):
         """Loads the initial cogs"""
-
-        cogs = set(cogs)
-        cogs.add("templatebot.cogs.default")
-        cogs.add("jishaku")
 
         success, failed = 0, 0
 
