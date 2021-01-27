@@ -20,6 +20,10 @@ class Bot(commands.Bot):
 
         success, failed = 0, 0
 
+        cogs = set(cogs)
+        cogs.add("templatebot.cogs.default")
+        cogs.add("jishaku")
+
         for cog in cogs:
             try:
                 super().load_extension(cog)
