@@ -1,3 +1,4 @@
+from time import time
 from discord.ext import commands
 from typing import List
 
@@ -9,6 +10,7 @@ class Bot(commands.Bot):
 
     def __init__(self, name: str, command_prefix, logging_url: str = None, loglevel: int = LogLevel.INFO, *args, **kwargs):
         self.name = name
+        self.ltime = time()
         super().__init__(command_prefix=command_prefix, *args, **kwargs)
 
         self.logger = WebhookLogger(name=name, url=logging_url, level=loglevel)
