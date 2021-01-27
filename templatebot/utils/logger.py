@@ -46,10 +46,14 @@ class WebhookLogger:
         return data
 
     def send(self, logtype: str, content: str):
+        print(colored(f"[{logtype}] {content}", termc[logtype.lower()]))
+        if not self.url: return
         data = self.create_content(logtype, content)
         post(self.url, json=data)
 
     async def send_async(self, logtype: str, content: str):
+        print(colored(f"[{logtype}] {content}", termc[logtype.lower()]))
+        if not self.url: return
         data = self.create_content(logtype, content)
         if self.sess.closed:
             self.sess = ClientSession()
