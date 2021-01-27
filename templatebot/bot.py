@@ -18,6 +18,10 @@ class Bot(commands.Bot):
     def load_initial_cogs(self, cogs: List[str]):
         """Loads the initial cogs"""
 
+        cogs = set(cogs)
+        cogs.add("templatebot.cogs.default")
+        cogs.add("jishaku")
+
         success, failed = 0, 0
 
         for cog in cogs:
