@@ -6,11 +6,11 @@ from datetime import datetime
 from termcolor import colored
 
 termc = {
-    5: 'white',
-    4: 'green',
-    3: 'yellow',
-    2: 'red',
-    1: 'red'
+    "debug": 'white',
+    "info": 'green',
+    "warn": 'yellow',
+    "error": 'red',
+    "critical": 'red'
 }
 
 
