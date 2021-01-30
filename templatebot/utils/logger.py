@@ -6,11 +6,11 @@ from datetime import datetime
 from termcolor import colored
 
 termc = {
-    "debug": 'white',
-    "info": 'green',
-    "warn": 'yellow',
-    "error": 'red',
-    "critical": 'red'
+    "debug": "white",
+    "info": "green",
+    "warn": "yellow",
+    "error": "red",
+    "critical": "red",
 }
 
 
@@ -23,7 +23,13 @@ class LogLevel:
 
 
 class WebhookLogger:
-    def __init__(self, name: str, url: str = None, level: int = LogLevel.INFO, loop=asyncio.get_event_loop()):
+    def __init__(
+        self,
+        name: str,
+        url: str = None,
+        level: int = LogLevel.INFO,
+        loop=asyncio.get_event_loop(),
+    ):
         self.name = name
         self.url = url
         self.level = level
@@ -37,23 +43,21 @@ class WebhookLogger:
             "username": self.name,
             "avatar_url": "https://vcokltfre.github.io/static/img/service.png",
             "content": content,
-            "allowed_mentions": {
-                "users": False,
-                "roles": False,
-                "everyone": False
-            }
+            "allowed_mentions": {"users": False, "roles": False, "everyone": False},
         }
         return data
 
     def send(self, logtype: str, content: str):
         print(colored(f"[{logtype}] {content}", termc[logtype.lower()]))
-        if not self.url: return
+        if not self.url:
+            return
         data = self.create_content(logtype, content)
         post(self.url, json=data)
 
     async def send_async(self, logtype: str, content: str):
         print(colored(f"[{logtype}] {content}", termc[logtype.lower()]))
-        if not self.url: return
+        if not self.url:
+            return
         data = self.create_content(logtype, content)
         if self.sess.closed:
             self.sess = ClientSession()

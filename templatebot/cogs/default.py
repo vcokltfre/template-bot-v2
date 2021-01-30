@@ -84,7 +84,8 @@ class Default(commands.Cog):
         await m.edit(content="Testing...")
         rtt = time.time() - t_start
         await m.edit(
-            content=f"Pong!\nMessage edit RTT: {round(rtt * 1000, 2)}ms\nWebsocket Latency: {round(self.bot.latency * 1000, 2)}ms")
+            content=f"Pong!\nMessage edit RTT: {round(rtt * 1000, 2)}ms\nWebsocket Latency: {round(self.bot.latency * 1000, 2)}ms"
+        )
 
     @commands.command(name="uptime")
     @commands.is_owner()
@@ -96,7 +97,9 @@ class Default(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.bot.logger.info(f"{self.bot.name} has received READY event, logged in as {self.bot.user} ({self.bot.user.id})")
+        await self.bot.logger.info(
+            f"{self.bot.name} has received READY event, logged in as {self.bot.user} ({self.bot.user.id})"
+        )
 
 
 def setup(bot: Bot):
