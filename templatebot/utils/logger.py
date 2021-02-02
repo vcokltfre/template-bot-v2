@@ -1,9 +1,9 @@
 import asyncio
 from aiohttp import ClientSession
 from requests import post
-
 from datetime import datetime
 from termcolor import colored
+from logging import debug, info, warn, error, critical
 
 termc = {
     "debug": "white",
@@ -63,7 +63,7 @@ class WebhookLogger:
             self.sess = ClientSession()
 
         task = self.loop.create_task(self.sess.post(self.url, json=data))
-        await task
+        task
 
     ## Synchronous methods
 
