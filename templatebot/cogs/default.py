@@ -1,4 +1,4 @@
-from time import time
+import time
 from datetime import timedelta
 from discord.ext import commands
 
