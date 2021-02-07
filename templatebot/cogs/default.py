@@ -24,7 +24,6 @@ class Default(commands.Cog):
         """Load a set of cogs"""
         log = ""
         for cog in cognames:
-            cog = "bot.cogs." + cog
             try:
                 self.bot.load_extension(cog)
                 log += f"Successfully loaded cog {cog}\n"
@@ -40,7 +39,6 @@ class Default(commands.Cog):
         """Reload a set of cogs"""
         log = ""
         for cog in cognames:
-            cog = "bot.cogs." + cog
             try:
                 self.bot.reload_extension(cog)
                 log += f"Successfully reloaded cog {cog}\n"
@@ -56,7 +54,6 @@ class Default(commands.Cog):
         """Unload a set of cogs"""
         log = ""
         for cog in cognames:
-            cog = "bot.cogs." + cog
             try:
                 self.bot.unload_extension(cog)
                 log += f"Successfully unloaded cog {cog}\n"
