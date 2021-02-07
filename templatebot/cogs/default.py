@@ -10,7 +10,7 @@ class Default(commands.Cog):
 
     def __init__(self, bot: Bot):
         self.bot = bot
-        self.ltime = time()
+        self.ltime = time.time()
 
     @commands.group(name="cogs")
     @commands.is_owner()
@@ -91,8 +91,8 @@ class Default(commands.Cog):
     @commands.is_owner()
     async def uptime(self, ctx: commands.Context):
         """Get the bot's current uptime"""
-        bot_uptime = timedelta(seconds=round(time() - self.bot.ltime))
-        cog_uptime = timedelta(seconds=round(time() - self.ltime))
+        bot_uptime = timedelta(seconds=round(time.time() - self.bot.ltime))
+        cog_uptime = timedelta(seconds=round(time.time() - self.ltime))
         await ctx.send(f"Bot uptime: {bot_uptime}\nCog load uptime: {cog_uptime}")
 
     @commands.Cog.listener()
