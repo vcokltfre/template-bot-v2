@@ -5,7 +5,7 @@ from discord.ext import commands
 from templatebot import Bot
 
 
-class Default(commands.Cog):
+class Default(commands.Cog, command_attrs=dict(hidden=True)):
     """A general purpose cog for tasks like cog loading, reloading, and unloading."""
 
     def __init__(self, bot: Bot):
