@@ -94,7 +94,7 @@ class Default(commands.Cog, command_attrs=dict(hidden=True)):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await await self.bot.logger.info(
+        await self.bot.logger.info(
             f"{self.bot.name} has received READY event, logged in as {self.bot.user} ({self.bot.user.id})"
         )
 
