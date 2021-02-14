@@ -29,9 +29,9 @@ class Default(commands.Cog, command_attrs=dict(hidden=True)):
                 log += f"Successfully loaded cog {cog}\n"
             except Exception as e:
                 log += f"Failed to load cog {cog}: {e}\n"
-                self.bot.logger.error(f"Cog loading: failed to load {cog}: {e}")
+                await self.bot.logger.error(f"Cog loading: failed to load {cog}: {e}")
 
-        self.bot.logger.info(f"Loaded cog(s):\n{log}")
+        await self.bot.logger.info(f"Loaded cog(s):\n{log}")
         await ctx.send(log)
 
     @cogs_group.command(name="reload")
@@ -44,9 +44,9 @@ class Default(commands.Cog, command_attrs=dict(hidden=True)):
                 log += f"Successfully reloaded cog {cog}\n"
             except Exception as e:
                 log += f"Failed to reload cog {cog}: {e}\n"
-                self.bot.logger.error(f"Cog reloading: failed to reload {cog}: {e}")
+                await self.bot.logger.error(f"Cog reloading: failed to reload {cog}: {e}")
 
-        self.bot.logger.info(f"Reloaded cog(s):\n{log}")
+        await self.bot.logger.info(f"Reloaded cog(s):\n{log}")
         await ctx.send(log)
 
     @cogs_group.command(name="unload")
@@ -59,9 +59,9 @@ class Default(commands.Cog, command_attrs=dict(hidden=True)):
                 log += f"Successfully unloaded cog {cog}\n"
             except Exception as e:
                 log += f"Failed to unload cog {cog}: {e}\n"
-                self.bot.logger.error(f"Cog unloading: failed to unload {cog}: {e}")
+                await self.bot.logger.error(f"Cog unloading: failed to unload {cog}: {e}")
 
-        self.bot.logger.info(f"Unloaded cog(s):\n{log}")
+        await self.bot.logger.info(f"Unloaded cog(s):\n{log}")
         await ctx.send(log)
 
     @commands.command(name="restart", aliases=["reboot", "shutdown"])
@@ -69,7 +69,7 @@ class Default(commands.Cog, command_attrs=dict(hidden=True)):
     async def restart(self, ctx: commands.Context):
         """Make the bot logout"""
         await ctx.send("Restarting...")
-        self.bot.logger.info(f"Shutting down {self.bot.name}")
+        await self.bot.logger.info(f"Shutting down {self.bot.name}")
         await self.bot.close()
 
     @commands.command(name="ping")
@@ -94,7 +94,7 @@ class Default(commands.Cog, command_attrs=dict(hidden=True)):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        await self.bot.logger.info(
+        await await self.bot.logger.info(
             f"{self.bot.name} has received READY event, logged in as {self.bot.user} ({self.bot.user.id})"
         )
 
